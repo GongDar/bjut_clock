@@ -3,7 +3,7 @@ name: bjut_clock
 on:
   push:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '1 16 * * *'
 
 jobs:
   sign_in:
