@@ -11,8 +11,15 @@ except:
     server_key = ""
 
 try:
-    dictionary = os.environ["person"]
-    print(dictionary)
+    list = os.environ["person"].split(' ')
+    usernamelist = []
+    passwordlist = []
+    for item in list:
+        if list.index(item)%2==0:
+            usernamelist.append(item)
+        else:
+            passwordlist.append(item)
+    dictionary = dict(zip(usernamelist, passwordlist))
     '''
     username = os.environ["username"] # 自己的账号
     password = os.environ["password"] # 自己的密码
