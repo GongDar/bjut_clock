@@ -1,9 +1,9 @@
 name: bjut_clock
 
 on:
-  push:
+  
   schedule:
-    - cron: '1 9 * * *'
+    - cron: '15 9 * * *'
 
 jobs:
   sign_in:
