@@ -12,6 +12,7 @@ except:
 
 try:
     dictionary = os.environ["person"]
+    print(dictionary)
     '''
     username = os.environ["username"] # 自己的账号
     password = os.environ["password"] # 自己的密码
