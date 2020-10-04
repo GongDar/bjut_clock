@@ -11,8 +11,11 @@ except:
     server_key = ""
 
 try:
+    dictionary = os.environ["person"]
+    '''
     username = os.environ["username"] # 自己的账号
     password = os.environ["password"] # 自己的密码
+    '''
 except:
     print("未获得完整用户名和密码")
 
@@ -21,10 +24,10 @@ header = {"User-Agent": "Mozilla/5.0 (Linux; Android 10;  AppleWebKit/537.36 (KH
 s.headers.update(header)
 
 
-def login(s: requests.Session):
+def login(s: requests.Session, key, value):
     sign_data = {
-        "username": username,  # 自己的账号
-        "password": password  # 自己的密码
+        "username": key,  # 自己的账号
+        "password": value  # 自己的密码
     }
     r = s.post("https://itsapp.bjut.edu.cn/uc/wap/login/check", data=sign_data)
 
@@ -104,12 +107,12 @@ def send_message(key, message, clock_info):
 
 
 if __name__ == "__main__":
+    for key, value in dictionary.items():
+      #登录
+      login(s, key, value)
 
-    #登录
-    login(s)
+      # 抓取昨天信息，用于今天提交
+      yesterday_data = get_yesterday(s)
 
-    # 抓取昨天信息，用于今天提交
-    yesterday_data = get_yesterday(s)
-
-    # 提交
-    submit(s, yesterday_data)
+      # 提交
+      submit(s, yesterday_data)
