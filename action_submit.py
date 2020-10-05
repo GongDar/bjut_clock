@@ -96,7 +96,7 @@ def submit(s: requests.Session, old: dict):
     }
     r = s.post("https://itsapp.bjut.edu.cn/ncov/wap/default/save", data=new_daily)
 
-    print("提交信息:", new_daily)
+    
     result = r.json()
     if result.get('m') == "操作成功":
         print("打卡成功")
